@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "962561998306",
+    "project_id": "fundoo-quiz-app",
+    "storage_bucket": "fundoo-quiz-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962561998306:android:3556763e0cb53aaa750dbb",
+        "android_client_info": {
+          "package_name": "com.ritiksharmarj.fundoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962561998306-ddm4ro87ghsll9ru6ojhlc6ip8hi8a8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvohgT9X7xAh56NN8a8sD0_2FGOWTOzMk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962561998306-ddm4ro87ghsll9ru6ojhlc6ip8hi8a8u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
