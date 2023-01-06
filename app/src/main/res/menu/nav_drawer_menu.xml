@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/miProfile"
+        android:icon="@drawable/ic_person"
+        android:title="Profile" />
+
+    <item
+        android:id="@+id/miStarred"
+        android:icon="@drawable/ic_star"
+        android:title="Starred" />
+
+    <item
+        android:id="@+id/miChooseTheme"
+        android:icon="@drawable/ic_theme"
+        android:title="Choose Theme" />
+
+</menu>

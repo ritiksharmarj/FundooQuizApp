@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             // Sign in with email
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { it ->
-                    if (it.isComplete) {
+                    if (it.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Toast.makeText(this, "Login successfully.", Toast.LENGTH_SHORT).show()
                         Intent(this, MainActivity::class.java).also {

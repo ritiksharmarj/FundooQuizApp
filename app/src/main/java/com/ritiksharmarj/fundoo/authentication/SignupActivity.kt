@@ -45,7 +45,7 @@ class SignupActivity : AppCompatActivity() {
                 // Create user with email
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { it ->
-                        if (it.isComplete) {
+                        if (it.isSuccessful) {
                             // Sign up success, update UI with the signed-in user's information
                             Toast.makeText(
                                 this,
