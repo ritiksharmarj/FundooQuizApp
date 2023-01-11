@@ -2,6 +2,7 @@ package com.ritiksharmarj.fundoo
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -27,12 +28,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: QuizAdapter
     private var quizList = mutableListOf<Quiz>()
     private lateinit var firestore: FirebaseFirestore
-    private var checkedItem = 2
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPreferences = getSharedPreferences("FUNDOO", MODE_PRIVATE)
+        when (sharedPreferences.getInt("NIGHT_MODE", 2)) {
+            0 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            1 -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
 
         setUpViews()
     }
@@ -133,6 +141,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpTheme() {
         val themeOptions = arrayOf("Light", "Dark", "System default")
+        var checkedItem = sharedPreferences.getInt("NIGHT_MODE", 2)
 
         MaterialAlertDialogBuilder(this)
             .setTitle("Choose theme")
@@ -141,9 +150,18 @@ class MainActivity : AppCompatActivity() {
             }
             .setPositiveButton("OK") { _, _ ->
                 when (themeOptions[checkedItem]) {
-                    "Light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    "Dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    "System default" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                    "Light" -> {
+                        sharedPreferences.edit().putInt("NIGHT_MODE", 0).apply()
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    }
+                    "Dark" -> {
+                        sharedPreferences.edit().putInt("NIGHT_MODE", 1).apply()
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }
+                    else -> {
+                        sharedPreferences.edit().putInt("NIGHT_MODE", 2).apply()
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                    }
                 }
             }
             .setNegativeButton("Cancel") { dialog, _ ->
