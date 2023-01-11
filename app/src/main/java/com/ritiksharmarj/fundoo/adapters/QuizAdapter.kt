@@ -1,13 +1,14 @@
 package com.ritiksharmarj.fundoo.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.ritiksharmarj.fundoo.QuestionActivity
 import com.ritiksharmarj.fundoo.R
 import com.ritiksharmarj.fundoo.models.Quiz
 import com.ritiksharmarj.fundoo.utils.IconPicker
@@ -29,6 +30,12 @@ class QuizAdapter(private val context: Context, private val quizzes: List<Quiz>)
     override fun onBindViewHolder(holder: QuizViewHolder, position: Int) {
         holder.quizTitle.text = quizzes[position].title
         holder.quizIcon.setImageResource(IconPicker.getIcon())
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, QuestionActivity::class.java)
+            intent.putExtra("DATE", quizzes[position].title)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

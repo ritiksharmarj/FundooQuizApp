@@ -18,4 +18,11 @@
     <string name="close">Close</string>
     <string name="open">Open</string>
     <string name="more_options">More Options</string>
+    <string name="quiz_description">As per the Ministry of Culture, how many centrally protected monuments are missing?</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_previous">Previous</string>
+    <string name="btn_submit">Submit</string>
+    <string name="quiz_dummy_option">Rajasthan</string>
+    <string name="fab_content_desc_main">Date Picker</string>
+    <string name="log_out">Log Out</string>
 </resources>
